@@ -1,0 +1,126 @@
+
+.ko-popup-content {
+    display:none;
+}
+.ko-popup-bg {
+    height:100%;
+    width:100%;
+    background-color:rgba(0,0,0,0.5);
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:10000;
+    opacity:0;
+}
+.ko-popup-window-outer {
+    position:absolute;
+    padding:20px;
+    max-width:90%;
+}
+.ko-popup-window-html, .ko-popup-window-iframe {
+    padding:0px 20px 20px 20px;
+    background-color:white;
+    box-shadow:rgba(0,0,0,0.7) 0px 0px 40px;
+    border-radius:4px;
+    max-width:100%;
+    z-index:10001;
+    position:relative;
+}
+
+.ko-popup-window-header {
+    height:40px;
+    border-bottom:1px solid #e5e5e5;
+}
+.ko-popup-window-iframe .ko-popup-window-header {
+    border-bottom:none;
+    height:20px;
+}
+.ko-popup-window-html .ko-popup-window-content {
+    position:relative;
+    max-height:100%;
+}
+
+.ko-popup-window-image {
+    position:absolute;
+    top:50%;
+    left:50%;
+    max-width:90%;
+    box-shadow:rgba(0,0,0,0.9) 0px 0px 40px;
+    border-radius:5px;
+    overflow:hidden;
+    background-color:white;
+}
+.ko-popup-window-image img {
+    max-height:90%;
+}
+.ko-popup-image-desc {
+    padding:10px;
+}
+.ko-popup-image-desc a, .ko-popup-window-content a {
+    text-decoration:none;
+    color: #5094B1;
+}
+.ko-popup-image-desc a:hover, .ko-popup-window-content a:hover {
+    color: #333E48;
+    text-decoration: none;
+}
+
+.ko-popup-close {
+    position:absolute;
+    top:0px;
+    right:0px;
+    display:inline-block;
+    font-size:20px;
+    padding:0px 6px;
+    color:#777;
+    cursor:pointer;
+}
+.ko-popup-close:hover {
+    color:#333E48;
+}
+.ko-popup-next {
+    height:34px;
+    width:34px;
+    position:absolute;
+    top:50%;
+    margin-top:-17px;
+    right:10px;
+    background:url(/bootstrap/images/plugins/large_right.png) no-repeat;
+    background-position:center;
+    border-radius:50%;
+    cursor:pointer;
+    transition:.35s;
+    opacity:0.6;
+}
+.ko-popup-next:hover {
+    background:url(/bootstrap/images/plugins/large_right_hov.png) no-repeat;
+    background-position:center;
+    opacity:1;
+}
+.ko-popup-prev {
+    height:34px;
+    width:34px;
+    position:absolute;
+    top:50%;
+    margin-top:-17px;
+    left:10px;
+    background:url(/bootstrap/images/plugins/large_left.png) no-repeat;
+    background-position:center;
+    border-radius:50%;
+    cursor:pointer;
+    transition:.35s;
+    opacity:0.6;
+}
+.ko-popup-prev:hover {
+    background:url(/bootstrap/images/plugins/large_left_hov.png) no-repeat;
+    background-position:center;
+    opacity:1;
+}
+
+.ko-popup-index {
+    position:absolute;
+    bottom:0px;
+    right:5px;
+    font-size:11px;
+    color:#aaa;
+}
