@@ -8,8 +8,16 @@ $('.item-to-popup').koPopup({
     gallery: true
 });
 
+```html
 <div class="item-to-popup" img-url="/url/of/image/to/show.jpg">
   <div class="ko-popup-content">
     Description HTML for the image can be placed here.
   </div>
 </div>
+<div class="item-to-popup" img-url="/url/of/image/to/show.jpg">
+  <div class="ko-popup-content">Description HTML for the image can be placed here.</div>
+</div>
+<div class="item-to-popup" img-url="/url/of/image/to/show.jpg">
+  <div class="ko-popup-content">Description HTML for the image can be placed here.</div>
+</div>
+```
