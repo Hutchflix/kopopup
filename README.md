@@ -1,7 +1,8 @@
 # kopopup
 Very simple popup plugin that supports images, HTML, and iframes.
-    - Auto-centers in window
-    - Responsive
+- Auto-sizing
+- Auto-centers in window
+- Responsive
     
 ###Images
 
