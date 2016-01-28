@@ -26,7 +26,7 @@
                     var HTMLtoAppend;
                     var content = "";
                     //get the image url
-                    var imgURL = $(el).attr('img-url');
+                    var imgURL = $(el).attr('data-url');
 
                     //if content exists - get it
                     if ($(el).find('.ko-popup-content').html() != undefined) {
@@ -224,7 +224,7 @@
                     if ($(item).find('.ko-popup-content').html() != undefined) {
                         content = $(item).find('.ko-popup-content').html();
                     }
-                    $('.ko-popup-window-image img').attr("src", $(item).attr("img-url"));
+                    $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
                     $('.ko-popup-image-desc').html(content);
 
                     //re-position the popup as the content could be a different size
@@ -261,7 +261,7 @@
                     if ($(item).find('.ko-popup-content').html() != undefined) {
                         content = $(item).find('.ko-popup-content').html();
                     }
-                    $('.ko-popup-window-image img').attr("src", $(item).attr("img-url"));
+                    $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
                     $('.ko-popup-image-desc').html(content);
 
                     //re-position the popup as the content could be a different size
