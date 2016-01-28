@@ -37,7 +37,7 @@
                     //  <div class="ko-popup-window-image">
                     //      <div class="ko-popup-next"></div>
                     //      <div class="ko-popup-prev"></div>
-                    //      <div title="Close (Esc)" class="ko-popup-close"><i class="fa fa-times"></i></div>
+                    //      <div title="Close (Esc)" class="ko-popup-close">&times;</div>
                     //      <img src="/U/R/L" class="img-responsive">
                     //      <div class="ko-popup-image-desc" style="padding:' + padding + '">CONTENT</div>
                     //      <div class="ko-popup-index"></div>
@@ -54,7 +54,7 @@
                     }
 
                     //Add the close button and the image
-                    HTMLtoAppend += '<div title="Close (Esc)" class="ko-popup-close"><i class="fa fa-times"></i></div><img src="' + imgURL + '" class="img-responsive">';
+                    HTMLtoAppend += '<div title="Close (Esc)" class="ko-popup-close">&times;</div><img src="' + imgURL + '" class="img-responsive">';
 
                     //if no content exists - get rid of the padding
                     var padding = "10px";
@@ -104,7 +104,7 @@
                                 '<div class="ko-popup-index"></div>';
                     }
                     HTMLtoAppend += '<div class="ko-popup-window-header">' +
-                                        '<div title="Close (Esc)" class="ko-popup-close"><i class="fa fa-times"></i></div>' +
+                                        '<div title="Close (Esc)" class="ko-popup-close">&times;</div>' +
                                     '</div>' +
                                     '<div class="ko-popup-window-content">' +
                                     '</div>' +
@@ -142,7 +142,7 @@
                             '<div class="ko-popup-window-outer">' +
                                 '<div class="ko-popup-window-html">' +
                                 '<div class="ko-popup-window-header">' +
-                                    '<div title="Close (Esc)" class="ko-popup-close"><i class="fa fa-times"></i></div>' +
+                                    '<div title="Close (Esc)" class="ko-popup-close">&times;</div>' +
                                 '</div>' +
                                 '<div class="ko-popup-window-content">' +
                                 '</div>' +
@@ -356,7 +356,7 @@
 
 
     //plugin init
-    $.fn.koPopup = function (options) {
+    $.fn.kopopup = function (options) {
         //Get the collection of items
         var koPop = new kop(this, options);
 
