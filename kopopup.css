@@ -70,7 +70,8 @@
     top:0px;
     right:0px;
     display:inline-block;
-    font-size:20px;
+    font-size:30px;
+    line-height:30px;
     padding:0px 6px;
     color:#777;
     cursor:pointer;
@@ -85,7 +86,7 @@
     top:50%;
     margin-top:-17px;
     right:10px;
-    background:url(/bootstrap/images/plugins/large_right.png) no-repeat;
+    background:url(img/right-arrow.png) no-repeat #ccc;
     background-position:center;
     border-radius:50%;
     cursor:pointer;
@@ -93,8 +94,7 @@
     opacity:0.6;
 }
 .ko-popup-next:hover {
-    background:url(/bootstrap/images/plugins/large_right_hov.png) no-repeat;
-    background-position:center;
+    background-color:#5094B1;
     opacity:1;
 }
 .ko-popup-prev {
@@ -104,7 +104,7 @@
     top:50%;
     margin-top:-17px;
     left:10px;
-    background:url(/bootstrap/images/plugins/large_left.png) no-repeat;
+    background:url(img/left-arrow.png) no-repeat #ccc;
     background-position:center;
     border-radius:50%;
     cursor:pointer;
@@ -112,8 +112,7 @@
     opacity:0.6;
 }
 .ko-popup-prev:hover {
-    background:url(/bootstrap/images/plugins/large_left_hov.png) no-repeat;
-    background-position:center;
+    background-color:#5094B1;
     opacity:1;
 }
 
