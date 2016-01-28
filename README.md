@@ -12,11 +12,11 @@ $(document).ready(function() {
 });
 ```
 
-Add the image url to a 'img-url' attribute on the element.
+Add the image url to a 'data-url' attribute on the element.
 ```html
-<div class="item-to-popup" img-url="/url/of/image/to/show.jpg"></div>
-<div class="item-to-popup" img-url="/url/of/image/to/show.jpg"></div>
-<div class="item-to-popup" img-url="/url/of/image/to/show.jpg"></div>
+<div class="item-to-popup" data-url="/url/of/image/to/show.jpg"></div>
+<div class="item-to-popup" data-url="/url/of/image/to/show.jpg"></div>
+<div class="item-to-popup" data-url="/url/of/image/to/show.jpg"></div>
 ```
 
 You can also add description HTML to each image if needed. Just wrap the HTML in a container with class 'ko-popup-content'
