@@ -4,12 +4,16 @@
 
 (function ($) {
 
-    var kop = function (coll, opt) {
+    //type
+    //gallery
+    //onOpen
+    //onClose
+
+    var kop = function (coll, options) {
         var elemList = coll;
         var instance = this;
         var curIndex = 0;
-        var gallery = opt.gallery;
-        var type = opt.type;
+        var opt = options;
 
 
         this.showPopup = function (el) {
@@ -21,7 +25,7 @@
             });
 
             //What type of popup is it?
-            switch (type) {
+            switch (opt.type) {
                 case "image":
                     var HTMLtoAppend;
                     var content = "";
@@ -48,7 +52,7 @@
                     HTMLtoAppend = '<div class="ko-popup-bg"><div class="ko-popup-window-image">';
 
                     //Add next/prev buttons if it's a gallery
-                    if (gallery) {
+                    if (opt.gallery && elemList.length > 1) {
                         HTMLtoAppend += '<div class="ko-popup-next"></div>' +
                                 '<div class="ko-popup-prev"></div>';
                     }
@@ -61,13 +65,13 @@
                     if (content == "") { padding = "0px"; }
 
                     //
-                    if (gallery) {
+                    if (opt.gallery) {
                         HTMLtoAppend += '<div class="ko-popup-image-desc" style="padding:' + padding + '">' + content +
                         '</div>';
                     }
 
                     //Show the index numbers if it's a gallery
-                    if (gallery) {
+                    if (opt.gallery && elemList.length > 1) {
                         HTMLtoAppend += '<div class="ko-popup-index"></div>';
                     }
 
@@ -98,7 +102,7 @@
                             '<div class="ko-popup-window-outer">' +
                                 '<div class="ko-popup-window-iframe" style="width:1130px">';
                     //Add next/prev buttons if it's a gallery
-                    if (gallery) {
+                    if (opt.gallery && elemList.length > 1) {
                         HTMLtoAppend += '<div class="ko-popup-next"></div>' +
                                 '<div class="ko-popup-prev"></div>' +
                                 '<div class="ko-popup-index"></div>';
@@ -167,7 +171,7 @@
             }
 
             //Gallery tasks
-            if (gallery && elemList.length > 1) {
+            if (opt.gallery && elemList.length > 1) {
                 
                 //refresh index text
                 $('.ko-popup-index').html(curIndex + 1 + " / " + elemList.length);
@@ -201,12 +205,16 @@
             $('.ko-popup-window-outer, .ko-popup-window-image').click(function () {
                 event.stopPropagation();
             });
+
+            //onOpen Callback
+            if (opt.onOpen != undefined) {
+                opt.onOpen(el);
+            }
         }
 
         
         //Show the next item
         this.next = function () {
-            console.log("next");
             //change the current index
             if (curIndex < elemList.length - 1) {
                 curIndex++;
@@ -218,7 +226,7 @@
             var item = elemList[curIndex];
 
             //show the next item
-            switch (type) {
+            switch (opt.type) {
                 case "image":
                     var content = "";
                     if ($(item).find('.ko-popup-content').html() != undefined) {
@@ -241,6 +249,11 @@
 
             //refresh index text
             $('.ko-popup-index').html(curIndex + 1 + " / " + elemList.length);
+
+            //onChange Callback
+            if (opt.onChange != undefined) {
+                opt.onChange(elemList[curIndex]);
+            }
         }
 
         //Show the previous item
@@ -255,7 +268,7 @@
             var item = elemList[curIndex];
 
             //show the next item
-            switch (type) {
+            switch (opt.type) {
                 case "image":
                     var content = "";
                     if ($(item).find('.ko-popup-content').html() != undefined) {
@@ -278,6 +291,11 @@
 
             //refresh index text
             $('.ko-popup-index').html(curIndex + 1 + " / " + elemList.length);
+
+            //onChange Callback
+            if (opt.onChange != undefined) {
+                opt.onChange(elemList[curIndex]);
+            }
         }
 
         //Close the popup
@@ -290,6 +308,11 @@
 
             //unbind keypress
             $(document).unbind('keydown');
+
+            //onClose Callback
+            if (opt.onClose != undefined) {
+                opt.onClose(elemList[curIndex]);
+            }
         }
 
         //Re-position the popup on the screen
@@ -324,7 +347,7 @@
         }
 
         var positionHTMLPopup = function () {
-            if (type == "iframe") {
+            if (opt.type == "iframe") {
                 $('.ko-popup-iframe').css("height", $('.ko-popup-iframe').contents().find("body").height() + 5 + "px");
                 $('.ko-popup-iframe').css("overflow", "hidden");
                 //$('.ko-popup-window-iframe').css("width", $('ko-popup-iframe').width());
