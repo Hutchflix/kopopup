@@ -25,11 +25,13 @@
     max-width:100%;
     z-index:10001;
     position:relative;
+	max-width:1200px;
 }
 
 .ko-popup-window-header {
-    height:40px;
-    border-bottom:1px solid #e5e5e5;
+	min-height:20px;
+    /*border-bottom:1px solid #e5e5e5;*/
+	margin-bottom:5px;
 }
 .ko-popup-window-iframe .ko-popup-window-header {
     border-bottom:none;
@@ -54,6 +56,7 @@
     max-height:90%;
 }
 .ko-popup-image-desc {
+	box-sizing:border-box;
     padding:10px;
 }
 .ko-popup-image-desc a, .ko-popup-window-content a {
@@ -86,7 +89,7 @@
     top:50%;
     margin-top:-17px;
     right:10px;
-    background:url(img/right-arrow.png) no-repeat #ccc;
+    background:url(img/right-arrow.png) no-repeat rgba(200,200,200,0.5);
     background-position:center;
     border-radius:50%;
     cursor:pointer;
@@ -104,7 +107,7 @@
     top:50%;
     margin-top:-17px;
     left:10px;
-    background:url(img/left-arrow.png) no-repeat #ccc;
+    background:url(img/left-arrow.png) no-repeat rgba(200,200,200,0.5);
     background-position:center;
     border-radius:50%;
     cursor:pointer;
