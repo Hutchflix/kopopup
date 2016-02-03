@@ -6,11 +6,13 @@ Very simple popup plugin that supports images, HTML, and iframes.
 
 ###Options
 
+```javascript
     type: "image"|"iframe"|"html"
     gallery: true|false
     onOpen: function(el)   //callback function after the popup is opened (el = element opened)
     onClose: function(el)  //callback function after the popup is closed (el = element closed)
     onChange: function(el) //callback function when the popup is changed (next/prev) (el = element changed to)
+```
 
 ###Images
 
@@ -54,3 +56,5 @@ Add the iframe URL to a 'data-url' attribute on the element.
 <div class="item-to-popup" data-url="/url2/to/load/in/iframe/popup"></div>
 <div class="item-to-popup" data-url="/url3/to/load/in/iframe/popup"></div>
 ```
+
+####See the examples.html file for examples!
