@@ -39,6 +39,15 @@ You can also add description HTML to each image if needed. Just wrap the HTML in
 </div>
 ```
 
+### HTML Content
+```html
+<div class="item-to-popup">
+    <div class="ko-popup-content">
+        HTML to use in the popup goes here.
+    </div>
+</div>
+```
+
 ### Iframes
 
 ```javascript
