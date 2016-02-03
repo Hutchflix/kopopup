@@ -337,14 +337,14 @@
         //Re-position the popup on the screen
         var positionIMGPopup = function () {
             //IMAGE HEIGHT - Image cannot be taller than the screen height - the description height
-            var imgMaxHeight = $(window).height() * .9 - $('.ko-popup-window-image .ko-popup-image-desc').height();
+            var imgMaxHeight = $('.ko-popup-bg').height() * .9 - $('.ko-popup-window-image .ko-popup-image-desc').height();
             //Dont let the image get smaller than 100px
             if (imgMaxHeight < 100) { imgMaxHeight = 100; }
             //Set the max-height for the image
             $('.ko-popup-window-image img').css("max-height", imgMaxHeight + "px");
 
             //IMAGE WIDTH - Image cannot be wider than the window width
-            $('.ko-popup-window-image img').css("max-width", $(window).width() * .8 + "px");
+            $('.ko-popup-window-image img').css("max-width", $('.ko-popup-bg').width() * .8 + "px");
             //Dont let the image get wider than the popup window
             if ($('.ko-popup-window-image').width() < $('.ko-popup-window-image img').width()) { $('.ko-popup-window-image img').css("max-width", $('.ko-popup-window-image').width() + "px"); }
             
