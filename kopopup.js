@@ -228,15 +228,23 @@
             //show the next item
             switch (opt.type) {
                 case "image":
-                    var content = "";
-                    if ($(item).find('.ko-popup-content').html() != undefined) {
-                        content = $(item).find('.ko-popup-content').html();
-                    }
+                    //Set the image URL
                     $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
-                    $('.ko-popup-image-desc').html(content);
-
-                    //re-position the popup as the content could be a different size
-                    positionIMGPopup();
+					
+					$('.ko-popup-window-image img').load(function() {
+						var content = "";
+						if ($(item).find('.ko-popup-content').html() != undefined) {
+							content = $(item).find('.ko-popup-content').html();
+							$('.ko-popup-image-desc').css("padding", "10px");
+						} else {
+							$('.ko-popup-image-desc').css("padding", "0px");
+						}
+					
+						$('.ko-popup-image-desc').html(content);
+						
+						//re-position the popup as the content could be a different size
+						positionIMGPopup();
+					});
                     break;
 
                 case "iframe":
@@ -270,15 +278,23 @@
             //show the next item
             switch (opt.type) {
                 case "image":
-                    var content = "";
-                    if ($(item).find('.ko-popup-content').html() != undefined) {
-                        content = $(item).find('.ko-popup-content').html();
-                    }
+					//Set the image URL
                     $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
-                    $('.ko-popup-image-desc').html(content);
-
-                    //re-position the popup as the content could be a different size
-                    positionIMGPopup();
+					
+                    $('.ko-popup-window-image img').load(function() {
+						var content = "";
+						if ($(item).find('.ko-popup-content').html() != undefined) {
+							content = $(item).find('.ko-popup-content').html();
+							$('.ko-popup-image-desc').css("padding", "10px");
+						} else {
+							$('.ko-popup-image-desc').css("padding", "0px");
+						}
+					
+						$('.ko-popup-image-desc').html(content);
+						
+						//re-position the popup as the content could be a different size
+						positionIMGPopup();
+					});
                     break;
 
                 case "iframe":
@@ -368,6 +384,8 @@
 
             //if the popup is taller than the window, allow scrolling
             if ($('.ko-popup-window-outer').outerHeight() > $(window).height()) {
+				//disable page scrolling
+				$('html').css("overflow", "hidden");
                 $('.ko-popup-bg').css("overflow-y", "scroll");
             } else {
                 $('.ko-popup-bg').css("overflow-y", "");
