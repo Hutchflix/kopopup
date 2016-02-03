@@ -159,6 +159,9 @@
                     //Add the content HTML
                     $('.ko-popup-window-content').append(el.find('.ko-popup-content').html());
 
+		    		//disable page scrolling
+                    $('html').css("overflow", "hidden");
+                    
                     //Position the popup in the center of the window
                     //Also re-position the popup on windows resize
                     positionHTMLPopup();
@@ -383,7 +386,7 @@
             $('.ko-popup-window-outer').css("left", left + "px");
 
             //if the popup is taller than the window, allow scrolling
-            if ($('.ko-popup-window-outer').outerHeight() > $(window).height()) {
+            if ($('.ko-popup-window-outer').outerHeight() > $('.ko-popup-bg').height()) {
 				//disable page scrolling
 				$('html').css("overflow", "hidden");
                 $('.ko-popup-bg').css("overflow-y", "scroll");
