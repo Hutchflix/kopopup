@@ -1,4 +1,4 @@
-
+﻿
 .ko-popup-content {
     display:none;
 }
@@ -25,13 +25,11 @@
     max-width:100%;
     z-index:10001;
     position:relative;
-	max-width:1200px;
 }
 
 .ko-popup-window-header {
-	min-height:20px;
-    /*border-bottom:1px solid #e5e5e5;*/
-	margin-bottom:5px;
+    height:40px;
+    border-bottom:1px solid #e5e5e5;
 }
 .ko-popup-window-iframe .ko-popup-window-header {
     border-bottom:none;
@@ -54,9 +52,10 @@
 }
 .ko-popup-window-image img {
     max-height:90%;
+    display:block;
 }
 .ko-popup-image-desc {
-	box-sizing:border-box;
+    box-sizing:border-box;
     padding:10px;
 }
 .ko-popup-image-desc a, .ko-popup-window-content a {
@@ -120,6 +119,7 @@
 }
 
 .ko-popup-index {
+    display:none;
     position:absolute;
     bottom:0px;
     right:5px;

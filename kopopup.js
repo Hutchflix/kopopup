@@ -1,4 +1,4 @@
-// KOPOPUP Plugin
+﻿// KOPOPUP Plugin
 //--- Popup windows with images and descriptions
 //--- Auto sizes to fit in the screen as well as centers
 
@@ -14,7 +14,6 @@
         var instance = this;
         var curIndex = 0;
         var opt = options;
-
 
         this.showPopup = function (el) {
             //find the index of the item selected
@@ -80,9 +79,6 @@
                     //Add the popup HTML to the page
                     $('body').append(HTMLtoAppend);
 
-                    //disable page scrolling
-                    $('html').css("overflow", "hidden");
-
                     //wait for the image to load
                     var img = $('<img src="' + imgURL + '"/>').load(function () {
                         //Position the popup in the center of the window
@@ -124,9 +120,6 @@
                     //Add the content HTML
                     $('.ko-popup-window-content').append(frameHtml);
 
-                    //disable page scrolling
-                    $('html').css("overflow", "hidden");
-
                     //Wait for iframe to load
                     $('.ko-popup-iframe').load(function () {
                         //Position the popup in the center of the window
@@ -159,9 +152,6 @@
                     //Add the content HTML
                     $('.ko-popup-window-content').append(el.find('.ko-popup-content').html());
 
-		    		//disable page scrolling
-                    $('html').css("overflow", "hidden");
-                    
                     //Position the popup in the center of the window
                     //Also re-position the popup on windows resize
                     positionHTMLPopup();
@@ -169,13 +159,13 @@
 
                     //Show the box
                     $('.ko-popup-bg').animate({ "opacity": 1 }, 300, "linear");
-                    
+
                     break;
             }
 
             //Gallery tasks
             if (opt.gallery && elemList.length > 1) {
-                
+
                 //refresh index text
                 $('.ko-popup-index').html(curIndex + 1 + " / " + elemList.length);
                 //Bind next/prev buttons
@@ -185,19 +175,13 @@
                 $('.ko-popup-prev').click(function () {
                     instance.prev();
                 });
-
-                //Bind key press events if it's a gallery
-                $(document).keydown(function (event) {
-                    //Left Key
-                    if (event.which == 37) {
-                        //Left Key
-                        instance.prev();
-                    } else if (event.which == 39) {
-                        //Right Key
-                        instance.next();
-                    }
-                });
             }
+
+            //disable page scrolling
+            $('html').css("overflow", "hidden");
+            $('html').css("margin-right", getScrollBarSize() + "px");
+
+            bindKeys();
 
             //Bind closing clicks
             $('.ko-popup-bg, .ko-popup-close').click(function () {
@@ -215,7 +199,7 @@
             }
         }
 
-        
+
         //Show the next item
         this.next = function () {
             //change the current index
@@ -231,29 +215,34 @@
             //show the next item
             switch (opt.type) {
                 case "image":
-                    //Set the image URL
-                    $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
-					
-					$('.ko-popup-window-image img').load(function() {
-						var content = "";
-						if ($(item).find('.ko-popup-content').html() != undefined) {
-							content = $(item).find('.ko-popup-content').html();
-							$('.ko-popup-image-desc').css("padding", "10px");
-						} else {
-							$('.ko-popup-image-desc').css("padding", "0px");
-						}
-					
-						$('.ko-popup-image-desc').html(content);
-						
-						//re-position the popup as the content could be a different size
-						positionIMGPopup();
-					});
+                    //disable keypress until finished
+                    $(document).unbind('keydown');
+
+                    $('<img src="' + $(item).attr("data-url") + '" />').load(function () {
+                        //Set the image URL
+                        $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
+
+                        var content = "";
+                        if ($(item).find('.ko-popup-content').html() != undefined) {
+                            content = $(item).find('.ko-popup-content').html();
+                            $('.ko-popup-image-desc').css("padding", "10px");
+                        } else {
+                            $('.ko-popup-image-desc').css("padding", "0px");
+                        }
+
+                        $('.ko-popup-image-desc').html(content);
+
+                        //re-position the popup as the content could be a different size
+                        positionIMGPopup();
+
+                        bindKeys();
+                    });
                     break;
 
                 case "iframe":
                     //show the new iframe
                     $('.ko-popup-window-iframe iframe').attr("src", $(item).attr("data-url"));
-                    
+
                     break;
                 default:
             }
@@ -268,36 +257,41 @@
         }
 
         //Show the previous item
-        this.prev = function() {
+        this.prev = function () {
             if (curIndex > 0) {
                 curIndex--;
             } else {
                 curIndex = elemList.length - 1;
             }
-            
+
             //Get the next item
             var item = elemList[curIndex];
 
             //show the next item
             switch (opt.type) {
                 case "image":
-					//Set the image URL
-                    $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
-					
-                    $('.ko-popup-window-image img').load(function() {
-						var content = "";
-						if ($(item).find('.ko-popup-content').html() != undefined) {
-							content = $(item).find('.ko-popup-content').html();
-							$('.ko-popup-image-desc').css("padding", "10px");
-						} else {
-							$('.ko-popup-image-desc').css("padding", "0px");
-						}
-					
-						$('.ko-popup-image-desc').html(content);
-						
-						//re-position the popup as the content could be a different size
-						positionIMGPopup();
-					});
+                    //disable keypress until finished
+                    $(document).unbind('keydown');
+
+                    $('<img src="' + $(item).attr("data-url") + '" />').load(function () {
+                        //Set the image URL
+                        $('.ko-popup-window-image img').attr("src", $(item).attr("data-url"));
+
+                        var content = "";
+                        if ($(item).find('.ko-popup-content').html() != undefined) {
+                            content = $(item).find('.ko-popup-content').html();
+                            $('.ko-popup-image-desc').css("padding", "10px");
+                        } else {
+                            $('.ko-popup-image-desc').css("padding", "0px");
+                        }
+
+                        $('.ko-popup-image-desc').html(content);
+
+                        //re-position the popup as the content could be a different size
+                        positionIMGPopup();
+
+                        bindKeys();
+                    });
                     break;
 
                 case "iframe":
@@ -323,6 +317,7 @@
             $('.ko-popup-bg').animate({ "opacity": 0 }, 300, "linear", function () {
                 $('.ko-popup-bg').remove();
                 $('html').css("overflow", "");
+                $('html').css("margin-right", "");
             });
 
             //unbind keypress
@@ -337,17 +332,17 @@
         //Re-position the popup on the screen
         var positionIMGPopup = function () {
             //IMAGE HEIGHT - Image cannot be taller than the screen height - the description height
-            var imgMaxHeight = $('.ko-popup-bg').height() * .9 - $('.ko-popup-window-image .ko-popup-image-desc').height();
+            var imgMaxHeight = $('.ko-popup-bg').height() * .9 - $('.ko-popup-window-image .ko-popup-image-desc').outerHeight();
             //Dont let the image get smaller than 100px
             if (imgMaxHeight < 100) { imgMaxHeight = 100; }
             //Set the max-height for the image
-            $('.ko-popup-window-image img').css("max-height", imgMaxHeight + "px");
+            $('.ko-popup-window-image img').css("max-height", Math.floor(imgMaxHeight) + "px");
 
             //IMAGE WIDTH - Image cannot be wider than the window width
             $('.ko-popup-window-image img').css("max-width", $('.ko-popup-bg').width() * .8 + "px");
             //Dont let the image get wider than the popup window
             if ($('.ko-popup-window-image').width() < $('.ko-popup-window-image img').width()) { $('.ko-popup-window-image img').css("max-width", $('.ko-popup-window-image').width() + "px"); }
-            
+
             //Set the description width the same as the image, always
             $('.ko-popup-image-desc').css("width", $('.ko-popup-window-image img').outerWidth() - 1 + "px");
 
@@ -387,16 +382,40 @@
 
             //if the popup is taller than the window, allow scrolling
             if ($('.ko-popup-window-outer').outerHeight() > $('.ko-popup-bg').height()) {
-				//disable page scrolling
-				$('html').css("overflow", "hidden");
                 $('.ko-popup-bg').css("overflow-y", "scroll");
             } else {
                 $('.ko-popup-bg').css("overflow-y", "");
             }
         }
 
-    };
+        var bindKeys = function () {
+            //Bind key press events if it's a gallery
+            $(document).keydown(function (event) {
+                //Left Key
+                if (event.which == 37 && opt.gallery) {
+                    //Left Key
+                    instance.prev();
+                } else if (event.which == 39 && opt.gallery) {
+                    //Right Key
+                    instance.next();
+                } else if (event.which == 27) {
+                    instance.closePopup();
+                }
+            });
+        }
 
+        var getScrollBarSize = function () {
+            var scrollWidth = 0;
+            var scrollDiv = document.createElement("div");
+            scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
+            document.body.appendChild(scrollDiv);
+            scrollWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+            document.body.removeChild(scrollDiv);
+            
+            return scrollWidth;
+        }
+
+    };
 
 
     //plugin init
